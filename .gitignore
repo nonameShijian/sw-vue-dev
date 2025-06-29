@@ -1,6 +1,7 @@
 # Node.js依赖
 node_modules/
 dist/
+!typings/**/dist/
 
 # 开发过程中的编译缓存或临时文件
 *.log
