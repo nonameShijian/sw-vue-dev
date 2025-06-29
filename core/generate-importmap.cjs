@@ -132,24 +132,26 @@ module.exports = function () {
 
   // console.log("importmap", importMap);
   const js = `// 具体功能参考 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/script/type/importmap
-const importMap = ${JSON.stringify(importMap, null, 2)}
-if (
-  typeof window.require == "function" &&
-  typeof window.process == "object" &&
-  typeof window.__dirname == "string"
-) {
-  // 使importMap解析node内置模块
-  const builtinModules = require("module").builtinModules;
-  if (Array.isArray(builtinModules)) {
-  importMap.imports[module] = importMap.imports[\`node:\${module}\`] =
-    \`./noname-builtinModules/\${module}\`;
+if (typeof HTMLScriptElement.supports === 'function' && HTMLScriptElement.supports('importmap')) {
+  const importMap = ${JSON.stringify(importMap, null, 2)}
+  if (
+    typeof window.require == "function" &&
+    typeof window.process == "object" &&
+    typeof window.__dirname == "string"
+  ) {
+    // 使importMap解析node内置模块
+    const builtinModules = require("module").builtinModules;
+    if (Array.isArray(builtinModules)) {
+    importMap.imports[module] = importMap.imports[\`node:\${module}\`] =
+      \`./noname-builtinModules/\${module}\`;
+    }
   }
-}
-console.log("importmap", importMap);
-const im = document.createElement("script");
-im.type = "importmap";
-im.textContent = JSON.stringify(importMap, null, 2);
-// @ts-ignore
-document.currentScript.after(im);`;
+  console.log("importmap", importMap);
+  const im = document.createElement("script");
+  im.type = "importmap";
+  im.textContent = JSON.stringify(importMap, null, 2);
+  // @ts-ignore
+  document.currentScript.after(im);
+}`;
   fs.writeFileSync(path.join(__dirname, "importmap.js"), js);
 };

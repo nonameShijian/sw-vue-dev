@@ -2,6 +2,8 @@
 
 本项目使用Service Worker实现实时编译vue文件的功能，可以不依赖vite和webpack等脚手架也可以直接开发vue项目。
 
+且使用[importmap](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/script/type/importmap)实现模块的简化名称导入。
+
 # 运行方法
 
 执行npm run dev并在浏览器查看项目效果，不需要下载依赖
@@ -167,11 +169,12 @@ element-plus的完整版本
 # 其他模块的引入方法
 以pinia为例：
 
-npm i pinia
+1. 下载pinia模块: npm i pinia
 
+2. 修改src/main.ts文件
 ```js
 // src/main.ts
-import { createApp } from '../core/vue.esm-browser.js';
+import { createApp } from 'vue';
 
 // pinia
 import { createPinia } from 'pinia';
@@ -181,6 +184,8 @@ const app = createApp(App);
 app.use(createPinia())
 app.mount('#app');
 ```
+
+3. 重新启动项目
 
 
 # 项目缺陷

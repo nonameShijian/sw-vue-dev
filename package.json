@@ -4,7 +4,7 @@
     "name": "诗笺",
     "email": "2954700422@qq.com"
   },
-  "description": "一个基于 Service Worker 的 Vue 开发环境，支持 TypeScript、CSS、JSON 等文件实时编译与动态导入",
+  "description": "一个基于 Service Worker 和 importmap 的 Vue 开发环境，支持 TypeScript、CSS、JSON 等文件实时编译与动态导入",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
