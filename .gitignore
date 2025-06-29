@@ -1,0 +1,21 @@
+# Node.js依赖
+node_modules/
+dist/
+
+# 开发过程中的编译缓存或临时文件
+*.log
+*.tmp
+*.map
+
+# IDE配置文件（可选）
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 构建生成的文件（如importmap.js等自动生成文件）
+/core/importmap.js
+
+package-lock.json

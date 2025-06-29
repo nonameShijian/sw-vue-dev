@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "vue": [
+        "./core/vue.esm-browser"
+      ],
+      "vue-router": [
+        "./core/vue-router.esm-browser"
+      ],
+      "@vue/*": [
+        "./typings/@vue/*"
+      ],
+      "typescript": [
+        "./core/typescript"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "./core",
+      "./typings/@vue"
+    ],
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "dom",
+      "esnext",
+      "webworker"
+    ]
+  }
+}
